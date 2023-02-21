@@ -4,6 +4,7 @@ import {
   SignedIn,
   SignedOut,
   RedirectToSignIn,
+  UserButton,
 } from "@clerk/nextjs";
 import type { AppProps } from 'next/app'
 import { useRouter } from "next/router";
