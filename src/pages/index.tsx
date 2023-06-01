@@ -19,7 +19,7 @@ export default function Home() {
             go to sign-in <a href='/sign-in'>here</a>
           </p>
           <div>
-          <UserButton />
+          <UserButton afterSignOutUrl='/' />
           </div>
         </div>
       </main>
