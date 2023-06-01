@@ -28,15 +28,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ClerkProvider {...pageProps}>
       {isPublicPage ? (
-        <Component {...pageProps} />
+        < Component {...pageProps} />
       ) : (
         <>
-          <SignedIn>
-            <Component {...pageProps} />
-          </SignedIn>
-          <SignedOut>
-            <RedirectToSignIn />
-          </SignedOut>
+        <SignedIn>
+        <Component {...pageProps} />
+        </SignedIn>
         </>
       )}
     </ClerkProvider>
