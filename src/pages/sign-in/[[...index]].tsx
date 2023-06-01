@@ -5,8 +5,11 @@ import { useEffect } from "react";
 const SignInPage = () => {
     const router = useRouter();
     useEffect(() => {
-        router.push('/sign-in');
-        return;
+        const { redirect_url } = router.query;
+        if (redirect_url && (redirect_url as string).startsWith('http')) {
+            router.push('/sign-in');
+            return;
+        }
     }, [router]);
 
 
