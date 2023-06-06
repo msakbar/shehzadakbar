@@ -17,6 +17,7 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             go to sign-in for local paths <a href='/sign-in'>here</a>
+            </p>
             <p>
             go to sign-in for accounts here <a href='https://accounts.shehzadakbar.com/sign-in'>here</a>
           </p>
