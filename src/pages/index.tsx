@@ -16,7 +16,9 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <p>
-            go to sign-in <a href='https://accounts.shehzadakbar.com/sign-in'>here</a>
+            go to sign-in for local paths <a href='/sign-in'>here</a>
+            <p>
+            go to sign-in for accounts here <a href='https://accounts.shehzadakbar.com/sign-in'>here</a>
           </p>
           <div>
           <UserButton afterSignOutUrl='/' />
