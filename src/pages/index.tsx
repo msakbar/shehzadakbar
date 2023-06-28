@@ -1,6 +1,5 @@
 import Head from 'next/head'
-
-import { UserButton } from '@clerk/nextjs'
+import { OrganizationSwitcher,UserButton } from '@clerk/nextjs'
 import styles from '@/styles/Home.module.css'
 
 
@@ -19,11 +18,15 @@ export default function Home() {
             go to sign-in for local paths <a href='/sign-in'>here</a>
             </p>
             <p>
-            go to sign-in for accounts here <a href='https://accounts.shehzadakbar.com/sign-in'>here</a>
+            go to sign-in for accounts here PROD <a href='https://accounts.shehzadakbar.com/sign-in'>here</a>
+          </p>
+          <p>
+            go to sign-in for accounts here DEV <a href='https://improved-quagga-26.accounts.lclclerk.com/sign-in'>here</a>
           </p>
           <div>
-          <UserButton afterSignOutUrl='/' />
+          <UserButton />
           </div>
+          <div><OrganizationSwitcher/></div>
         </div>
       </main>
     </>
