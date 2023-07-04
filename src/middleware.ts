@@ -1,30 +1,21 @@
-import { withClerkMiddleware, getAuth } from '@clerk/nextjs/server'
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { redirectToSignIn, getAuth, withClerkMiddleware } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
 // Set the paths that don't require the user to be signed in
-const publicPaths = ['/', '/sign-in*', '/sign-up*']
+const publicPaths = ['/sign-in*', '/sign-up*', '/app-dir*', '/custom*','/redirecthelper','/redirectaftersignout'];
 
 const isPublic = (path: string) => {
-  return publicPaths
-  //.find(x =>     path.match(new RegExp(`^${x}$`.replace('*$', '($|/)'))))
-}
+  return publicPaths.find(x => path.match(new RegExp(`^${x}$`.replace('*$', '($|/)'))));
+};
+export default withClerkMiddleware(req => {
+  const { userId, debug } = getAuth(req);
+  console.log('app-dir: middleware:debug', debug());
 
-export default withClerkMiddleware((request: NextRequest) => {
-  if (isPublic(request.nextUrl.pathname)) {
-    return NextResponse.next()
+  if (!userId && !isPublic(req.nextUrl.pathname)) {
+    console.log(req.url);
+    const resp = redirectToSignIn({ returnBackUrl: req.url });
+    return resp;
   }
-  // if the user is not signed in redirect them to the sign in page.
-  const { userId } = getAuth(request)
-
-  if (!userId) {
-    // redirect the users to /pages/sign-in/[[...index]].ts
-    
-    const signInUrl = new URL('/sign-in', request.url)
-    signInUrl.searchParams.set('redirect_url', request.nextUrl.pathname)
-    return NextResponse.redirect(signInUrl)
-  }
-  return NextResponse.next()
-})
-
-export const config = { matcher:  '/((?!_next/image|_next/static|favicon.ico).*)',};
+  return NextResponse.next();
+});
+export const config = { matcher: '/((?!.*\\.).*)' };
