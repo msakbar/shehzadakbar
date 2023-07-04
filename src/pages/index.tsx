@@ -27,10 +27,10 @@ const Home: NextPage = () => {
             go to sign-in for accounts here PROD <a href='https://accounts.shehzadakbar.com/sign-in'>here</a>
           </p>
           <p>
-            go to sign-in for accounts here DEV <a href='https://viable-catfish-33.accountsstage.dev/sign-in'>here</a>
+            go to sign-in for accounts here DEV <a href='https://accounts.powerful.oyster-2.lcl.dev/sign-in'>here</a>
           </p>
           <p>
-            go to sign-up for accounts here DEV <a href='https://viable-catfish-33.accountsstage.dev/sign-up'>here</a>
+            go to sign-up for accounts here DEV <a href='https://accounts.powerful.oyster-2.lcl.dev/sign-up'>here</a>
           </p>
           <div>
           <UserButton />
